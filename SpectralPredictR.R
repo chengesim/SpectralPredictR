@@ -17,7 +17,7 @@ require(tidyr)
 set.seed(112345)
 cores=detectCores()-1
 
-specfolder=choose.dir(default="",caption="Please select main folder containing subdirectories of spectral files.")
+specfolder="~/OneDrive - University of Cape Town/SimcelileChenge/Data/Jonaskop/Spectra/Raw ASD Scans"
 
 split_path=function(path) {
   if (dirname(path) %in% c("_", path)) return(basename(path))
@@ -48,7 +48,7 @@ for (j in c("asd","sed","sig"))
     if (j=="asd"){
       FST=match_sensors(
         FST,
-        splice_at=c(1001,1801)
+        splice_at=c(1001,1801),fixed_sensor=2,interpolate_wvl=c(-1,1)
       )
     }
     if (j=="sig"){
